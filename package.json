@@ -4,12 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "watch": "nodemon server.js",
+    "build-docs": "jsoc -c ./docs/jsdoc.config.json -R ./README.md . && open docs/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "express": "^4.16.4",
+    "jsdocs": "^3.6.2",
+    "supertest": "^4.0.2",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tia-rose-401-advanced-javascript/lab-07-middleware.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tia-rose-401-advanced-javascript/lab-07-middleware/issues"
+  },
+  "homepage": "https://github.com/tia-rose-401-advanced-javascript/lab-07-middleware#readme"
 }
