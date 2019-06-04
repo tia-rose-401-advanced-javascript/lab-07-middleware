@@ -5,9 +5,18 @@ let app = express();
 const errorHandler = require('./middleware/errorHandler');
 const unknown = require('./middleware/404');
 const reqestTime = require('./middleware/time');
+const cD = require('./routes');
 
 const PORT = process.env.PORT || 3000;
 
+let math = (number) => {
+  return(req, res, next) => {
+    req.number = number**2;
+    next();
+  };
+};
+
+let squared = math(3);
 
 app.get('/', reqestTime, (req, res, next) => {
 });
@@ -16,20 +25,11 @@ app.get('/a', (req,res) => {
   res.status(200).send('Route A');
 });
 
-app.get('/b', (req,res) => {
-  res.status(200).send('Route B');
+app.get('/b', squared, (req,res) => {
+  res.status(200).send(`${req.number} is the number of the day`);
 });
 
-app.get('/c', (req,res) => {
-  res.status(200).send('Route C');
-});
-
-app.get('/d', (req, res, next) => {
-  res.status(500).send('issue');
-  console.log('In the "/d" route');
-  next(errorHandler);
-});
-
+app.use(cD);
 app.use(unknown);
 app.use(errorHandler);
 
