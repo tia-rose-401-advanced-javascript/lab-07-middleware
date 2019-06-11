@@ -29,10 +29,11 @@ app.get('/b', squared, logger, reqestTime,  (req,res) => {
 });
 
 
-app.get('*', unknown, logger, (req, res, next) => {
+app.get('*', unknown, logger, (req, res) => {
   console.log('Catch All');
 });
 
+app.use(reqestTime);
 app.use(cD);
 app.use(unknown);
 app.use(errorHandler);
