@@ -1,11 +1,12 @@
 'use strict';
 
 const express = require('express');
-let app = express();
+const app = express();
 const errorHandler = require('./middleware/errorHandler');
 const unknown = require('./middleware/404');
 const reqestTime = require('./middleware/time');
 const cD = require('./routes');
+const logger = require('./middleware/logger');
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,18 +19,19 @@ let math = (number) => {
 
 let squared = math(3);
 
-app.get('/', reqestTime, (req, res, next) => {
-});
 
 app.get('/a', (req,res) => {
   res.status(200).send('Route A');
 });
 
-app.get('/b', squared, (req,res) => {
+app.get('/b', squared, logger, reqestTime,  (req,res) => {
   res.status(200).send(`${req.number} is the number of the day`);
 });
 
 
+app.get('*', unknown, logger, (req, res, next) => {
+  console.log('Catch All');
+});
 
 app.use(cD);
 app.use(unknown);

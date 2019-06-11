@@ -1,5 +1,5 @@
 'use strict';
-const time = require('../middleware/time');
+const time = require('../middleware/logger');
 const supertest = require('supertest');
 const mockRequest = supertest(time);
 
@@ -11,7 +11,7 @@ describe('middleware', () => {
       let req = {
         method: 'get',
         path: '/',
-        requestTime: 'time'
+        requestTime: 'time',
       };
       let res = {};
       let next = jest.fn(() => true);
