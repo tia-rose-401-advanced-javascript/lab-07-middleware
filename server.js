@@ -39,11 +39,6 @@ app.get('*', unknown, logger, (req, res) => {
   console.log('Catch All');
 });
 
-// app.use(reqestTime);
-// app.use(cD);
-// app.use(unknown);
-// app.use(errorHandler);
-
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
