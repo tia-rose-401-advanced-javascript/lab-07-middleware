@@ -17,6 +17,7 @@
     "eslint": "^5.16.0",
     "express": "^4.17.1",
     "jest": "^24.8.0",
+    "jsdoc": "^3.6.2",
     "jsdocs": "^3.6.2",
     "supertest": "^4.0.2",
     "test": "jest"
