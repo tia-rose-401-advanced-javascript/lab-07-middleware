@@ -6,10 +6,9 @@ router.get('/c', (req,res) => {
   res.status(200).send('Route C');
 });
   
-router.get('/d', (error, req, res, next) => {
-  res.status(500).send('issue');
-  console.log('In the "/d" route');
-  next(error);
+router.get('/d', (req, res,) => {
+  res.status(200).send('Route D');
+
 });
 
 module.exports = router;

@@ -10,6 +10,12 @@ const logger = require('./middleware/logger');
 
 const PORT = process.env.PORT || 3000;
 
+
+app.use(reqestTime);
+app.use(logger);
+app.use('/d', errorHandler);
+app.use(cD);
+
 let math = (number) => {
   return(req, res, next) => {
     req.number = number**2;
@@ -33,10 +39,10 @@ app.get('*', unknown, logger, (req, res) => {
   console.log('Catch All');
 });
 
-app.use(reqestTime);
-app.use(cD);
-app.use(unknown);
-app.use(errorHandler);
+// app.use(reqestTime);
+// app.use(cD);
+// app.use(unknown);
+// app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
